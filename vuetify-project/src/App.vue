@@ -35,24 +35,39 @@
     <v-main>
       <swiper></swiper>
     </v-main>
+
+    <v-container>
+      <v-img id="volleyball" src="./assets/volleyball.png"></v-img>
+      <v-img id="girl" src="./assets/volleyball-girl.png"></v-img>
+    </v-container>
   </v-app>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import swiper from './components/swiper.vue';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const drawer = ref(false);
 
+gsap.registerPlugin(ScrollTrigger);
+// const tl = gsap.timeline()
+// tl.to('#girl', { x: 2000, duration:2})
+// gsap.to('#girl', {
+//   x: 1200,
+//   duration: 3
+// })
+
 </script>
 
+
 <style lang="scss" scoped>
+:deep(.v-toolbar__content) {
+  height: 120px !important;
+}
 .swiper {
   margin-top: 41px;
-}
-
-.custom-toolbar,.v-toolbar__content {
-  height: 120px !important;
 }
 
 .bg-white {
@@ -65,5 +80,15 @@ const drawer = ref(false);
 
 .v-application {
   background: #fff;
+}
+
+#volleyball {
+  width: 800px;
+  position: absolute;
+  opacity: 0.85;
+}
+
+#girl {
+  width: 500px;
 }
 </style>

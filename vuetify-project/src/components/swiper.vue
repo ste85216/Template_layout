@@ -15,14 +15,14 @@
   :loop="true" 
   :modules="modules" 
   class="mySwiper">
-    <swiper-slide><img src="https://picsum.photos/1920/700/?random=1"></swiper-slide>
-    <swiper-slide><img src="https://picsum.photos/1920/700/?random=2"></swiper-slide>
-    <swiper-slide><img src="https://picsum.photos/1920/700/?random=3"></swiper-slide>
-    <swiper-slide><img src="https://picsum.photos/1920/700/?random=4"></swiper-slide>
-    <swiper-slide><img src="https://picsum.photos/1920/700/?random=5"></swiper-slide>
-    <swiper-slide><img src="https://picsum.photos/1920/700/?random=6"></swiper-slide>
-    <swiper-slide><img src="https://picsum.photos/1920/700/?random=7"></swiper-slide>
-    <swiper-slide><img src="https://picsum.photos/1920/700/?random=8"></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/1920/950/?random=1"></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/1920/950/?random=2"></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/1920/950/?random=3"></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/1920/950/?random=4"></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/1920/950/?random=5"></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/1920/950/?random=6"></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/1920/950/?random=7"></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/1920/950/?random=8"></swiper-slide>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
@@ -56,6 +56,9 @@
 </script>
 
 <style lang="scss" scoped>
+  .swiper-slide {
+    height: calc(100vh - 105px);
+  }
   .swiper-button-next,
   .swiper-button-prev {
     width: 60px;
@@ -76,12 +79,23 @@
   }
   .swiper-button-next:hover,
   .swiper-button-prev:hover {
-    background: rgb(223, 203, 22);
+    background: #edc453;
   }
-  .swiper-pagination-bullet {
+  :deep(.swiper-pagination-bullet) {
   width: 20px; /* 改變點點的寬度 */
-  height:20px; /* 改變點點的高度 */
-  background-color: #000; /* 改變點點的背景顏色 */
+  height: 12px; /* 改變點點的高度 */
+  background-color: #edc453; /* 改變點點的背景顏色 */
   opacity: 1; /* 讓點點不透明 */
-}
+  border-radius: 23rem;
+  }
+  :deep(.swiper-pagination-bullet-active) {
+  width: 100px; /* 改變點點的寬度 */
+  height: 12px; /* 改變點點的高度 */
+  background-color: #256fbb; /* 改變點點的背景顏色 */
+  opacity: 1; /* 讓點點不透明 */
+  border-radius: 23rem;
+  transition: 0.35s;
+  -webkit-transition: 0.35s ease-in-out;
+  
+  }
 </style>
