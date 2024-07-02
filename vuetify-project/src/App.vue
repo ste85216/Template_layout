@@ -37,30 +37,57 @@
     </v-main>
 
     <v-container>
-      <v-img id="volleyball" src="./assets/volleyball.png"></v-img>
+      <v-img id="volleyball" src="./assets/volleyball.png" @load="animateVolleyball"></v-img>
+      <v-img id="girl" src="./assets/volleyball-girl.png"></v-img>
+    </v-container>
+    <v-container>
       <v-img id="girl" src="./assets/volleyball-girl.png"></v-img>
     </v-container>
   </v-app>
-</template>
+</template>f
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
 import swiper from './components/swiper.vue';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const drawer = ref(false);
+const pages = ["Home", "About Us", "Trainings", "Packages", "Blog", "Contact", "Events"];
 
 gsap.registerPlugin(ScrollTrigger);
-// const tl = gsap.timeline()
-// tl.to('#girl', { x: 2000, duration:2})
-// gsap.to('#girl', {
-//   x: 1200,
-//   duration: 3
-// })
 
+const animateVolleyball = () => {
+  const volleyballEl = document.querySelector('#volleyball');
+    gsap.to(volleyballEl, {
+      rotation: 360,
+      duration: 15,
+      repeat: -1,
+      repeatDelay: 0,
+      ease: 'none',
+    })
+  }
+
+  // const animateGirl = () => {
+  // const volleyballEl = document.querySelector('#volleyball');
+  //   gsap.to(volleyballEl, {
+  //     rotate: 720,
+  //     duration: 3,
+  //     scrollTrigger: {
+  //       trigger: volleyballEl,
+  //       start: 'top center',
+  //       end: 'top 100px',
+  //       scrub: 2,
+  //       markers: true
+  //     }
+  //   })
+  // }
+
+onMounted(async () => {
+  await nextTick(); // 确保DOM已经渲染完成
+  animateVolleyball(); // 仅在挂载后调用以检查是否能找到元素
+});
 </script>
-
 
 <style lang="scss" scoped>
 :deep(.v-toolbar__content) {
@@ -83,7 +110,8 @@ gsap.registerPlugin(ScrollTrigger);
 }
 
 #volleyball {
-  width: 800px;
+  width: 700px;
+  height: 700px;
   position: absolute;
   opacity: 0.85;
 }
